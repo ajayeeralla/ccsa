@@ -1,0 +1,4 @@
+packages: .
+          ../HaskellPackages/PeanoWitnesses-0.1.0.0
+          ../HaskellPackages/IndexedList-0.1.0.1
+          ../HaskellPackages/lens-master
