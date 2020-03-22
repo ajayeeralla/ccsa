@@ -1,29 +1,29 @@
 module Types where
-import Data.Number.Nat
+import Data.TypeNat.Nat
 
 -- | Mutually recursive types Message and Bool
 
 data Message = EmptyMsg
             | Var Nat
             | Name Nat
-            | IfMThenElse Types.Bool Message Message
+            | IfMThenElse MBool Message Message
             | Pair Message Message
             | Pi1 Message
             | Pi2 Message
             | To Message
             | Len Message
             | AttComp [Message]
-            deriving (Read, Show, Eq, Ord)
+            deriving (Eq)
 
 
-data Bool = True
-            | False
+data MBool = MTrue
+            | MFalse
             | Bvar Nat
-            | Eqb Types.Bool Types.Bool
+            | Eqb MBool MBool
             | Eqm Message Message
-            | IFBThenElse Types.Bool Types.Bool Types.Bool
-            deriving (Read, Show, Eq, Ord)
+            | IFBThenElse MBool MBool MBool
+            deriving (Eq)
 
 -- | Oursum type
 
-data Oursum = Msg Message| Bol Types.Bool deriving (Read, Show, Eq, Ord)
+data Oursum = Msg Message| Bol MBool deriving (Eq)
