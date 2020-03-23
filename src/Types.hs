@@ -3,17 +3,11 @@ module Types
 , MBool(MTrue, MFalse, Bvar), Oursum(..)) where
 import Data.Nat
 import GHC.Read
-import qualified Text.Read.Lex as L
+
 -- | Mutually recursive types Message and Bool
 instance Read Nat where
-  readPrec =
-    parens (do L.Ident s <- lexP
-               case s of
-                 "Z" -> return 0
-                 "S 0" -> return 1
-            )
-  readListPrec =  readListPrecDefault
-  readList     = readListDefault
+  readsPrec n = map (\(x,str) -> (toEnum x,str)) . readsPrec n
+
 data Message = EmptyMsg
             | Var Nat
             | Name Nat
