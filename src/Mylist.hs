@@ -5,7 +5,7 @@ module Mylist
   isBool) where
 import Data.List.Indexed.Counted
 import Types
-import Data.Numeric.Witness.Peano
+
 
 type Mylist n = CountedList n Oursum
 

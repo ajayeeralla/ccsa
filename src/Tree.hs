@@ -1,6 +1,14 @@
-module Tree where
+module Tree
+(Tree(..)
+, retDepth
+, State(..)
+, getTerm
+, evalTree
+, getLevelTerm
+, getTrace
+) where
 import Types
-import Data.TypeNat.Nat
+import Data.Nat
 
 data Tree a = EmptyT | Node a (Tree a) (Tree a) deriving (Read, Show, Eq)
 
@@ -61,5 +69,5 @@ getLevelTerm  (Node x l r) (S n) = IfMThenElse (chk1 x) (getLevelTerm l n) (IfMT
 
 getTrace :: CCSATree -> [Message]
 getTrace EmptyT = [EmptyMsg]
-getTrace xs = [getLevelTerm xs n  | n <- [0..depth] ]
+getTrace xs = [getLevelTerm xs n  | n <- [1..depth] ]
     where depth = retDepth xs
