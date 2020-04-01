@@ -1,6 +1,7 @@
 module Main where
 import Types
 import Tree
+import Trace()
 
 exTree :: Tree State
 exTree = Node (State "a" MTrue MFalse (Name 0))

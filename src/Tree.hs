@@ -9,6 +9,8 @@ module Tree
 ) where
 import Types
 import Data.Nat
+import Data.List (sortBy)
+import Data.Ord (comparing)
 
 data Tree a = EmptyT | Node a (Tree a) (Tree a) deriving (Read, Show, Eq)
 
@@ -25,6 +27,7 @@ data State = State {name ::String
                     , chk2 :: MBool
                     , out :: Message
                     }
+            deriving (Read, Show, Eq)
 
 type CCSATree = Tree State
 

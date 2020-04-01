@@ -4,9 +4,10 @@ module Types
 import Data.Nat
 import GHC.Read
 
--- | Mutually recursive types Message and Bool
 instance Read Nat where
   readsPrec n = map (\(x,str) -> (toEnum x,str)) . readsPrec n
+
+  -- | Mutually recursive types Message and Bool
 
 data Message = EmptyMsg
             | Var Nat
